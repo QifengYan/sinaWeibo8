@@ -1,0 +1,13 @@
+//
+//  sinaWeibo.pch
+//  sinaWeibo
+//
+//  Created by apple on 16/2/17.
+//  Copyright © 2016年 Qifeng Yan. All rights reserved.
+//
+
+#ifdef __OBJC__
+
+#import "UIView+ZUtility.h"
+
+#endif

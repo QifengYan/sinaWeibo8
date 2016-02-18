@@ -1,13 +1,13 @@
 //
 //  AppDelegate.m
-//  sinaWeibo8
+//  sinaWeibo
 //
-//  Created by apple on 16/2/18.
+//  Created by apple on 16/2/1.
 //  Copyright © 2016年 Qifeng Yan. All rights reserved.
 //
 
 #import "AppDelegate.h"
-
+#import "YQTabBarController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +16,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    // 创建窗口
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    // 设置颜色
+//    self.window.backgroundColor = [UIColor whiteColor];
+    // 创建一个tabBarController （不需要根控制器，导航控制器才需要根控制器）；
+    YQTabBarController *tabBarVC = [[YQTabBarController alloc] init];
+    // 指定根控制器
+    self.window.rootViewController = tabBarVC;
+    
+        // 展示窗口
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  sinaWeibo8
+//  sinaWeibo
 //
-//  Created by apple on 16/2/18.
+//  Created by apple on 16/2/1.
 //  Copyright © 2016年 Qifeng Yan. All rights reserved.
 //
 
