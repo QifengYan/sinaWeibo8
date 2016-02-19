@@ -23,6 +23,8 @@
 		18BB96A01C75FB7A00F521B9 /* YQHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB969F1C75FB7A00F521B9 /* YQHomeViewController.m */; };
 		18BB96A31C75FB8E00F521B9 /* YQMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB96A21C75FB8E00F521B9 /* YQMessageViewController.m */; };
 		18BB96A61C75FB9D00F521B9 /* YQProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB96A51C75FB9D00F521B9 /* YQProfileViewController.m */; };
+		18BB96AA1C760ED300F521B9 /* UIBarButtonItem+item.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB96A91C760ED300F521B9 /* UIBarButtonItem+item.m */; };
+		18BB96AD1C761A6F00F521B9 /* YQTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB96AC1C761A6F00F521B9 /* YQTitleButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,10 @@
 		18BB96A41C75FB9D00F521B9 /* YQProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQProfileViewController.h; sourceTree = "<group>"; };
 		18BB96A51C75FB9D00F521B9 /* YQProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQProfileViewController.m; sourceTree = "<group>"; };
 		18BB96A71C75FBD900F521B9 /* sinaWeibo.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sinaWeibo.pch; sourceTree = "<group>"; };
+		18BB96A81C760ED300F521B9 /* UIBarButtonItem+item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+item.h"; sourceTree = "<group>"; };
+		18BB96A91C760ED300F521B9 /* UIBarButtonItem+item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+item.m"; sourceTree = "<group>"; };
+		18BB96AB1C761A6F00F521B9 /* YQTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQTitleButton.h; sourceTree = "<group>"; };
+		18BB96AC1C761A6F00F521B9 /* YQTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQTitleButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +243,8 @@
 		18BB967A1C75FA3200F521B9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18BB96AB1C761A6F00F521B9 /* YQTitleButton.h */,
+				18BB96AC1C761A6F00F521B9 /* YQTitleButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -331,6 +339,8 @@
 				18BB968A1C75FA5200F521B9 /* UIImage+YQImage.m */,
 				18BB968B1C75FA5200F521B9 /* UIView+ZUtility.h */,
 				18BB968C1C75FA5200F521B9 /* UIView+ZUtility.m */,
+				18BB96A81C760ED300F521B9 /* UIBarButtonItem+item.h */,
+				18BB96A91C760ED300F521B9 /* UIBarButtonItem+item.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -430,6 +440,7 @@
 		18BB96311C75F49000F521B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = YQ;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Qifeng Yan";
 				TargetAttributes = {
@@ -500,11 +511,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18BB96AA1C760ED300F521B9 /* UIBarButtonItem+item.m in Sources */,
 				18BB969A1C75FAAB00F521B9 /* YQBadgeView.m in Sources */,
 				18BB96971C75FA9A00F521B9 /* YQTabBarButton.m in Sources */,
 				18BB96A61C75FB9D00F521B9 /* YQProfileViewController.m in Sources */,
 				18BB96911C75FA8900F521B9 /* YQTabBarController.m in Sources */,
 				18BB96A31C75FB8E00F521B9 /* YQMessageViewController.m in Sources */,
+				18BB96AD1C761A6F00F521B9 /* YQTitleButton.m in Sources */,
 				18BB96A01C75FB7A00F521B9 /* YQHomeViewController.m in Sources */,
 				18BB968D1C75FA5200F521B9 /* UIImage+YQImage.m in Sources */,
 				18BB969D1C75FB6E00F521B9 /* YQDiscoverViewController.m in Sources */,

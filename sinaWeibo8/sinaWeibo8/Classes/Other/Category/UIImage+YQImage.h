@@ -15,4 +15,9 @@
  */
 + (instancetype)imageWithOriginalNamed:(NSString *)imageName;
 
+/**
+ *  根据图片名称创建拉伸不变形图片
+ */
++ (instancetype)imageWithStretchImageNamed:(NSString *)name;
+
 @end

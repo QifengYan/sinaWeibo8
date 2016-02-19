@@ -18,7 +18,6 @@
 
 @property (nonatomic, strong) NSMutableArray *items;
 
-@property (nonatomic, weak) YQHomeViewController *home;
 @end
 
 @implementation YQTabBarController
@@ -53,9 +52,9 @@
     
     tabBar.items = self.items;
     
-//    [tabBar setDidSelectedBtn:^(NSUInteger index) {
-//        self.selectedIndex = index;
-//    }];
+    [tabBar setDidSelectedBtn:^(NSUInteger index) {
+        self.selectedIndex = index;
+    }];
     
     [tabBar setBackgroundColor:[UIColor whiteColor]];
     
@@ -77,7 +76,6 @@
     // 主界面
     YQHomeViewController *homeVC = [[YQHomeViewController alloc] init];
     [self setupOneChildViewController:homeVC image:[UIImage imageNamed:@"tabbar_home"] selectedImage:[UIImage imageWithOriginalNamed:@"tabbar_home_selected"] title:@"主页"];
-    _home = homeVC;
     // 消息
     YQMessageViewController *messageVC = [[YQMessageViewController alloc] init];
 //    messageVC.tabBarItem.title = @"消息";
