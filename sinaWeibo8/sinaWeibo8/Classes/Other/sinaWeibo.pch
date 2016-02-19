@@ -14,4 +14,10 @@
 
 #import "UIBarButtonItem+item.h"
 
+#define YQPopViewWidth 200
+
+#define YQPopViewY 55
+
+#define YQKeyWindow [UIApplication sharedApplication].keyWindow
+
 #endif

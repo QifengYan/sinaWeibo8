@@ -41,7 +41,7 @@
     
     if (self.currentImage == nil) {
         return;
-    } 
+    }
     
     self.titleLabel.x = 0;
     

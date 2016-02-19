@@ -25,6 +25,8 @@
 		18BB96A61C75FB9D00F521B9 /* YQProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB96A51C75FB9D00F521B9 /* YQProfileViewController.m */; };
 		18BB96AA1C760ED300F521B9 /* UIBarButtonItem+item.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB96A91C760ED300F521B9 /* UIBarButtonItem+item.m */; };
 		18BB96AD1C761A6F00F521B9 /* YQTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB96AC1C761A6F00F521B9 /* YQTitleButton.m */; };
+		18BB96B31C7705DB00F521B9 /* YQCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB96B21C7705DB00F521B9 /* YQCoverView.m */; };
+		18BB96B61C77063800F521B9 /* YQPopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB96B51C77063800F521B9 /* YQPopMenu.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,10 @@
 		18BB96A91C760ED300F521B9 /* UIBarButtonItem+item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+item.m"; sourceTree = "<group>"; };
 		18BB96AB1C761A6F00F521B9 /* YQTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQTitleButton.h; sourceTree = "<group>"; };
 		18BB96AC1C761A6F00F521B9 /* YQTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQTitleButton.m; sourceTree = "<group>"; };
+		18BB96B11C7705DB00F521B9 /* YQCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQCoverView.h; sourceTree = "<group>"; };
+		18BB96B21C7705DB00F521B9 /* YQCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQCoverView.m; sourceTree = "<group>"; };
+		18BB96B41C77063800F521B9 /* YQPopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQPopMenu.h; sourceTree = "<group>"; };
+		18BB96B51C77063800F521B9 /* YQPopMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQPopMenu.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,8 +249,12 @@
 		18BB967A1C75FA3200F521B9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18BB96B41C77063800F521B9 /* YQPopMenu.h */,
+				18BB96B51C77063800F521B9 /* YQPopMenu.m */,
 				18BB96AB1C761A6F00F521B9 /* YQTitleButton.h */,
 				18BB96AC1C761A6F00F521B9 /* YQTitleButton.m */,
+				18BB96B11C7705DB00F521B9 /* YQCoverView.h */,
+				18BB96B21C7705DB00F521B9 /* YQCoverView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -515,6 +525,7 @@
 				18BB969A1C75FAAB00F521B9 /* YQBadgeView.m in Sources */,
 				18BB96971C75FA9A00F521B9 /* YQTabBarButton.m in Sources */,
 				18BB96A61C75FB9D00F521B9 /* YQProfileViewController.m in Sources */,
+				18BB96B61C77063800F521B9 /* YQPopMenu.m in Sources */,
 				18BB96911C75FA8900F521B9 /* YQTabBarController.m in Sources */,
 				18BB96A31C75FB8E00F521B9 /* YQMessageViewController.m in Sources */,
 				18BB96AD1C761A6F00F521B9 /* YQTitleButton.m in Sources */,
@@ -522,6 +533,7 @@
 				18BB968D1C75FA5200F521B9 /* UIImage+YQImage.m in Sources */,
 				18BB969D1C75FB6E00F521B9 /* YQDiscoverViewController.m in Sources */,
 				18BB96711C75F98F00F521B9 /* AppDelegate.m in Sources */,
+				18BB96B31C7705DB00F521B9 /* YQCoverView.m in Sources */,
 				18BB968E1C75FA5200F521B9 /* UIView+ZUtility.m in Sources */,
 				18BB963E1C75F49000F521B9 /* main.m in Sources */,
 				18BB96961C75FA9A00F521B9 /* YQTabBar.m in Sources */,
