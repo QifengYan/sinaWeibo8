@@ -13,8 +13,10 @@
 /**
  *  显示pop菜单
  */
-+ (void)showInRect:(CGRect)rect;
++ (instancetype)showInRect:(CGRect)rect;
 
 + (void)hidden;
+
+@property (nonatomic,weak) UIView *contentView;
 
 @end

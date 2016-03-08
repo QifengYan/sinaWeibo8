@@ -50,7 +50,7 @@
 }
 
 - (void)btnDidClick:(UIButton *)btn {
-    
+//    
     _selectedBtn.selected = NO;
     btn.selected = YES;
     _selectedBtn = btn;

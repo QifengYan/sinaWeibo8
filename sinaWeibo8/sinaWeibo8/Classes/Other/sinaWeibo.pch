@@ -20,4 +20,15 @@
 
 #define YQKeyWindow [UIApplication sharedApplication].keyWindow
 
+
+
+#endif
+
+#ifdef DEBUG
+
+#define QFLog(...) NSLog(__VA_ARGS__)
+
+#else
+
+
 #endif

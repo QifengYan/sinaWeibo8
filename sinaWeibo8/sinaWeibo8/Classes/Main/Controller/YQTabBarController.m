@@ -13,6 +13,7 @@
 #import "YQDiscoverViewController.h"
 #import "YQMessageViewController.h"
 #import "YQProfileViewController.h"
+#import "YQNavigationController.h"
 
 @interface YQTabBarController ()
 
@@ -39,10 +40,8 @@
     [super viewDidLoad];
     // 加载子控制器
     [self setupChildViewController];
-    
     // 加载自定义的tabBar
     [self setupTabBar];
-
 }
 
 #pragma mark - 加载自定义tabBar
@@ -107,7 +106,7 @@
     // 保存tabBarItem 到数组中
     [self.items addObject:vc.tabBarItem];
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    YQNavigationController *nav = [[YQNavigationController alloc] initWithRootViewController:vc];
     
     [self addChildViewController:nav];
 

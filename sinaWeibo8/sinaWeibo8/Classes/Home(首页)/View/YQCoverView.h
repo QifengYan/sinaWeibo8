@@ -28,4 +28,7 @@
  */
 @property (nonatomic, weak) id<YQCoverViewDelegate> delegate;
 
+
+@property (nonatomic, assign) BOOL dimBackground;
+
 @end

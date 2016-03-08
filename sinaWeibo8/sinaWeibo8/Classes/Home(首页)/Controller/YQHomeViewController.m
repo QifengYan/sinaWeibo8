@@ -12,10 +12,13 @@
 #import "YQTitleButton.h"
 #import "YQPopMenu.h"
 #import "YQCoverView.h"
+#import "YQOneViewController.h"
+
 @interface YQHomeViewController ()<YQCoverViewDelegate>
 
 @property (nonatomic,weak) YQTitleButton *titleButton;
 
+@property (nonatomic, strong) YQOneViewController *one;
 
 @end
 
@@ -60,13 +63,17 @@
     
     coverView.delegate = self;
     
+//    coverView.dimBackground = YES;
+    
     // 弹出pop菜单
     CGFloat popW = YQPopViewWidth;
     CGFloat popH = popW;
     CGFloat popX = (self.view.width - popW) * 0.5;
     CGFloat popY = YQPopViewY;
     
-    [YQPopMenu showInRect:CGRectMake(popX, popY, popW, popH)];
+    YQPopMenu *pop = [YQPopMenu showInRect:CGRectMake(popX, popY, popW, popH)];
+    pop.userInteractionEnabled = YES; 
+    pop.contentView = self.one.view;
 }
 
 #pragma mark - YQCoverViewDelegate -
@@ -93,4 +100,13 @@
 {
     
 }
+
+- (YQOneViewController *)one
+{
+    if (_one == nil) {
+        _one = [[YQOneViewController alloc] init];
+    }
+    return _one;
+}
+
 @end

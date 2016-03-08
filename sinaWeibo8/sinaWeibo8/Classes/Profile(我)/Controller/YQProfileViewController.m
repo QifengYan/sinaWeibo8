@@ -17,11 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self prepareNavigationItem];
+}
+
+/// 加载右边按钮
+- (void)prepareNavigationItem {
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:(UIBarButtonItemStylePlain) target:self action:@selector(btnClick)];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = item;
+}
+
+#pragma mark - 监听按钮的点击
+- (void)btnClick {
+    
 }
 
 - (void)didReceiveMemoryWarning {

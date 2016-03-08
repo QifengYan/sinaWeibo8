@@ -10,6 +10,18 @@
 
 @implementation YQCoverView
 
+
+- (void)setDimBackground:(BOOL)dimBackground {
+    _dimBackground  = dimBackground;
+    if (dimBackground) {
+        self.backgroundColor = [UIColor blackColor];
+        self.alpha = 0.5;
+    } else {
+        self.alpha = 1;
+        self.backgroundColor = [UIColor clearColor];
+    }
+}
+
 /**
  *  展示蒙版
  */
