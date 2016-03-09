@@ -23,6 +23,7 @@
 
 @implementation YQTabBarController
 
+
 //+ (void)initialize {
 //    // 获得全局的tabBarItem
 ////    UITabBarItem *item = [UITabBarItem appearance];
@@ -40,6 +41,7 @@
     [super viewDidLoad];
     // 加载子控制器
     [self setupChildViewController];
+    
     // 加载自定义的tabBar
     [self setupTabBar];
 }
@@ -47,7 +49,7 @@
 #pragma mark - 加载自定义tabBar
 - (void)setupTabBar
 {
-    YQTabBar *tabBar = [[YQTabBar alloc] initWithFrame:self.tabBar.frame];
+    YQTabBar *tabBar = [[YQTabBar alloc] initWithFrame:self.tabBar.bounds];
     
     tabBar.items = self.items;
     
@@ -63,18 +65,37 @@
     //    self.tabBar = tabBar;  只读属性不允许直接修改 通过kvc
     //    [self setValue:tabBar forKeyPath:@"tabBar"];
     // 移除系统的tabBar
-    [self.tabBar removeFromSuperview];
+//    [self.tabBar removeFromSuperview];
     // 添加自定义的tabBar
-    [self.view addSubview:tabBar];
+    [self.tabBar addSubview:tabBar];
     //    NSLog(@"%@",self.tabBar);
 }
+
+
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated]; // 记得掉用父类的
+//    
+//    // 遍历tabBar 子控件
+//    for (UIView *tabBarButton in self.tabBar.subviews) {
+//        if ([tabBarButton isKindOfClass:NSClassFromString(@"UITabBarButton")]) {
+//            // 移除系统的 tabBar
+//            [tabBarButton removeFromSuperview];
+//        }
+//    }
+//}
 
 #pragma mark - 加载子控制器 -
 - (void)setupChildViewController {
     // 创建子控制器
     // 主界面
     YQHomeViewController *homeVC = [[YQHomeViewController alloc] init];
-    [self setupOneChildViewController:homeVC image:[UIImage imageNamed:@"tabbar_home"] selectedImage:[UIImage imageWithOriginalNamed:@"tabbar_home_selected"] title:@"主页"];
+//    [self setupOneChildViewController:homeVC image:[UIImage imageNamed:@"tabbar_home"] selectedImage:[UIImage imageWithOriginalNamed:@"tabbar_home_selected"] title:@"主页"];
+    homeVC.tabBarItem.title = @"主页";
+    homeVC.tabBarItem.image = [UIImage imageNamed:@"tabbar_home"];
+    homeVC.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_home_selected"];
+    [self.items addObject:homeVC.tabBarItem];
+    [self addChildViewController:[[YQNavigationController alloc] initWithRootViewController:homeVC]];
+    
     // 消息
     YQMessageViewController *messageVC = [[YQMessageViewController alloc] init];
 //    messageVC.tabBarItem.title = @"消息";

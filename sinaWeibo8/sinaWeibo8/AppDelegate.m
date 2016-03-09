@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "YQTabBarController.h"
+#import "YQNewFeatureController.h"
 @interface AppDelegate ()
 
 @end
@@ -24,7 +25,8 @@
     YQTabBarController *tabBarVC = [[YQTabBarController alloc] init];
     // 指定根控制器
     self.window.rootViewController = tabBarVC;
-    
+//    YQNewFeatureController *newVC = [[YQNewFeatureController alloc] init];
+//    self.window.rootViewController = newVC;
         // 展示窗口
     [self.window makeKeyAndVisible];
     return YES;
