@@ -89,12 +89,7 @@
     // 创建子控制器
     // 主界面
     YQHomeViewController *homeVC = [[YQHomeViewController alloc] init];
-//    [self setupOneChildViewController:homeVC image:[UIImage imageNamed:@"tabbar_home"] selectedImage:[UIImage imageWithOriginalNamed:@"tabbar_home_selected"] title:@"主页"];
-    homeVC.tabBarItem.title = @"主页";
-    homeVC.tabBarItem.image = [UIImage imageNamed:@"tabbar_home"];
-    homeVC.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_home_selected"];
-    [self.items addObject:homeVC.tabBarItem];
-    [self addChildViewController:[[YQNavigationController alloc] initWithRootViewController:homeVC]];
+    [self setupOneChildViewController:homeVC image:[UIImage imageNamed:@"tabbar_home"] selectedImage:[UIImage imageWithOriginalNamed:@"tabbar_home_selected"] title:@"主页"];
     
     // 消息
     YQMessageViewController *messageVC = [[YQMessageViewController alloc] init];

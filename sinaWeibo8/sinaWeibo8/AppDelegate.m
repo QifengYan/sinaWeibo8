@@ -6,9 +6,13 @@
 //  Copyright © 2016年 Qifeng Yan. All rights reserved.
 //
 
+#define NEW_VERSION @"newVersion"
+
 #import "AppDelegate.h"
 #import "YQTabBarController.h"
 #import "YQNewFeatureController.h"
+#import "YQWelcomeController.h"
+#import "YQOauthController.h"
 @interface AppDelegate ()
 
 @end
@@ -20,16 +24,32 @@
     // 创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     // 设置颜色
-//    self.window.backgroundColor = [UIColor whiteColor];
     // 创建一个tabBarController （不需要根控制器，导航控制器才需要根控制器）；
-    YQTabBarController *tabBarVC = [[YQTabBarController alloc] init];
-    // 指定根控制器
-    self.window.rootViewController = tabBarVC;
-//    YQNewFeatureController *newVC = [[YQNewFeatureController alloc] init];
-//    self.window.rootViewController = newVC;
-        // 展示窗口
+//    YQTabBarController *tabBarVC = [[YQTabBarController alloc] init];
+//    // 指定根控制器
+//    self.window.rootViewController = tabBarVC;
+    self.window.rootViewController = [[YQOauthController alloc] init];
+    // 展示窗口
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (BOOL)isNewVertion {
+  
+    // 获得系统版本
+    NSString * version = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
+    
+    // 获取当前版本
+    NSString *currentVersion = [[NSUserDefaults standardUserDefaults] stringForKey:NEW_VERSION];
+    
+    // 判断系统版本是否和当前版本一致
+    BOOL isTure = [version isEqualToString:currentVersion];
+    if (!isTure) {
+        // 保存
+        [[NSUserDefaults standardUserDefaults] setValue:version forKey:NEW_VERSION];
+        [[NSUserDefaults standardUserDefaults] synchronize]; // 同步
+    }
+    return isTure;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
