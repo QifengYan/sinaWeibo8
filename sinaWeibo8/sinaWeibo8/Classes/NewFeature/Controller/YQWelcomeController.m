@@ -8,7 +8,7 @@
 
 #import "YQWelcomeController.h"
 #import "Masonry.h"
-
+#import "YQTabBarController.h"
 @interface YQWelcomeController ()
 
 @property (nonatomic, strong) UIImageView *iconView;
@@ -66,7 +66,7 @@
     label.font = [UIFont systemFontOfSize:16];
     [label sizeToFit];
     [self.view addSubview: label];
-    label.alpha = 0;
+    self.welcomeName.alpha = 0;
     
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.iconView);
@@ -81,15 +81,21 @@
     [self.iconView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view.mas_bottom).offset(-([UIScreen mainScreen].bounds.size.height - 160));
     }];
-    
     // 设置动画
-    [UIView animateWithDuration:1.25 delay:0.1 usingSpringWithDamping:0.5 initialSpringVelocity:5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+    [UIView animateWithDuration:1.5 delay:0.1 usingSpringWithDamping:0.6 initialSpringVelocity:5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         [self.view layoutIfNeeded];
+        
+    } completion:^(BOOL finished) {
+        
         [UIView animateWithDuration:0.1 animations:^{
             self.welcomeName.alpha = 1;
         }];
-    } completion:^(BOOL finished) {
         
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            // 控制器跳转到 主界面
+            YQKeyWindow.rootViewController = [[YQTabBarController alloc] init];
+        });
     }];
 }
 

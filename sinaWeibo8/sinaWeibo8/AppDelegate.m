@@ -6,13 +6,14 @@
 //  Copyright © 2016年 Qifeng Yan. All rights reserved.
 //
 
-#define NEW_VERSION @"newVersion"
+
 
 #import "AppDelegate.h"
 #import "YQTabBarController.h"
-#import "YQNewFeatureController.h"
-#import "YQWelcomeController.h"
+#import "YQRootTool.h"
 #import "YQOauthController.h"
+#import "YQAccountTool.h"
+#import "YQWelcomeController.h"
 @interface AppDelegate ()
 
 @end
@@ -23,34 +24,40 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // 创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    // 设置颜色
-    // 创建一个tabBarController （不需要根控制器，导航控制器才需要根控制器）；
-//    YQTabBarController *tabBarVC = [[YQTabBarController alloc] init];
-//    // 指定根控制器
-//    self.window.rootViewController = tabBarVC;
-    self.window.rootViewController = [[YQOauthController alloc] init];
+    
+    // 判断用户有没有登陆
+    if (![YQAccountTool account]) {
+        self.window.rootViewController = [[YQOauthController alloc] init];
+    } else {
+        [YQRootTool chooseRootViewController:self.window];
+    }
+//    self.window.rootViewController = [[YQWelcomeController alloc] init];
     // 展示窗口
     [self.window makeKeyAndVisible];
     return YES;
 }
 
-- (BOOL)isNewVertion {
-  
-    // 获得系统版本
-    NSString * version = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
-    
-    // 获取当前版本
-    NSString *currentVersion = [[NSUserDefaults standardUserDefaults] stringForKey:NEW_VERSION];
-    
-    // 判断系统版本是否和当前版本一致
-    BOOL isTure = [version isEqualToString:currentVersion];
-    if (!isTure) {
-        // 保存
-        [[NSUserDefaults standardUserDefaults] setValue:version forKey:NEW_VERSION];
-        [[NSUserDefaults standardUserDefaults] synchronize]; // 同步
-    }
-    return isTure;
-}
+///// 控制器的选择
+//- (void)chooseRootViewController:(BOOL)isNewVertion {
+//   
+//    self.window.rootViewController = isNewVertion ? [[YQNewFeatureController alloc] init] :[[YQTabBarController alloc] init];
+//}
+//
+//+ (void)outChooseRootViewController:(BOOL)isNewVersion{
+//    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    [delegate chooseRootViewController:isNewVersion];
+//}
+//
+//- (UIViewController *)defaultsViewController {
+//    if (![YQAccountTool account]) {
+//        return [[YQOauthController alloc] init]; // 如果账号不存在 就返回登陆授权界面
+//    }
+//    //  如果账号存在 判断是否是新版本
+//    return [self isNewVertion] ? [[YQNewFeatureController alloc] init] :[[YQWelcomeController alloc] init];
+//    
+//}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

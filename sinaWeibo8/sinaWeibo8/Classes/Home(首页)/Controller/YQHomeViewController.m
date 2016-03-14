@@ -13,6 +13,9 @@
 #import "YQPopMenu.h"
 #import "YQCoverView.h"
 #import "YQOneViewController.h"
+#import "AFNetworking.h"
+#import "YQAccountTool.h"
+#import "YQAccount.h"
 
 @interface YQHomeViewController ()<YQCoverViewDelegate>
 
@@ -29,8 +32,31 @@
     
     // 添加item
     [self setupNavigationItem];
+    
+    // 获取网络数据
+    [self loadNewStatus];
 }
 
+#pragma mark - 获取网络数据
+- (void)loadNewStatus {
+    // 创建网络请求对象
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    // 发送网络请求
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"access_token"] = [YQAccountTool account].access_token;
+    
+    [manager GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"获取用户数据：%@",responseObject);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+
+#pragma mark - 添加左右按钮
 /**
  *  添加item
  */
@@ -85,12 +111,14 @@
     _titleButton.selected = NO;
 }
 
+#pragma mark - 监听按钮的点击
+
 /**
  *  监听左边按钮的点击
  */
 - (void)friendsearch
 {
-    [self.titleButton setTitle:@"爸鼻我要喝奶奶" forState:UIControlStateNormal];
+   
 }
 
 /**
@@ -100,6 +128,8 @@
 {
     
 }
+
+#pragma mark - 控制器懒加载
 
 - (YQOneViewController *)one
 {

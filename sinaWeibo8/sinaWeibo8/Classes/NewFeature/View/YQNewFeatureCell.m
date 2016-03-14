@@ -5,11 +5,11 @@
 //  Created by apple on 16/3/9.
 //  Copyright © 2016年 Qifeng Yan. All rights reserved.
 //
-
+#import "YQWelcomeController.h"
 #import "YQNewFeatureCell.h"
 #import "Masonry.h"
 #import "YQTabBarController.h"
-
+#import "AppDelegate.h"
 @interface YQNewFeatureCell ()
 
 /// 图片
@@ -91,9 +91,8 @@
 
 /// 监听 开始按钮的点击事件
 - (void)startBtnDidClick {
-    // 跳转到首页控制器
-    YQTabBarController *tabBar = [[YQTabBarController alloc] init];
-    [UIApplication sharedApplication].keyWindow.rootViewController = tabBar;
+    // 跳转到欢迎控制器
+    YQKeyWindow.rootViewController = [[YQWelcomeController alloc] init];
     
 }
 

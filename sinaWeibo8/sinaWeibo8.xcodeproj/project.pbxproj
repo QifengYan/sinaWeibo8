@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1883E0061C9660AD00AC488B /* YQStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 1883E0051C9660AD00AC488B /* YQStatuses.m */; };
+		1883E0091C9668FD00AC488B /* YQUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1883E0081C9668FD00AC488B /* YQUser.m */; };
+		1883E00C1C96700600AC488B /* YQPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1883E00B1C96700600AC488B /* YQPhoto.m */; };
 		18BB963E1C75F49000F521B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB963D1C75F49000F521B9 /* main.m */; };
 		18BB96491C75F49000F521B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18BB96481C75F49000F521B9 /* Assets.xcassets */; };
 		18BB964C1C75F49000F521B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BB964A1C75F49000F521B9 /* LaunchScreen.storyboard */; };
@@ -57,6 +60,9 @@
 		18FC33701C92B297005E3154 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC33651C92B297005E3154 /* AFURLRequestSerialization.m */; };
 		18FC33711C92B297005E3154 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC33671C92B297005E3154 /* AFURLResponseSerialization.m */; };
 		18FC33721C92B297005E3154 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC33691C92B297005E3154 /* AFURLSessionManager.m */; };
+		18FC33751C92BEB3005E3154 /* YQAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC33741C92BEB3005E3154 /* YQAccount.m */; };
+		18FC33C91C943982005E3154 /* YQAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC33C81C943982005E3154 /* YQAccountTool.m */; };
+		18FC33CD1C945624005E3154 /* YQRootTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC33CC1C945624005E3154 /* YQRootTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +83,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1883E0041C9660AD00AC488B /* YQStatuses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQStatuses.h; sourceTree = "<group>"; };
+		1883E0051C9660AD00AC488B /* YQStatuses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQStatuses.m; sourceTree = "<group>"; };
+		1883E0071C9668FD00AC488B /* YQUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQUser.h; sourceTree = "<group>"; };
+		1883E0081C9668FD00AC488B /* YQUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQUser.m; sourceTree = "<group>"; };
+		1883E00A1C96700600AC488B /* YQPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQPhoto.h; sourceTree = "<group>"; };
+		1883E00B1C96700600AC488B /* YQPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQPhoto.m; sourceTree = "<group>"; };
 		18BB96391C75F49000F521B9 /* sinaWeibo8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sinaWeibo8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BB963D1C75F49000F521B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18BB96481C75F49000F521B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,6 +196,12 @@
 		18FC33671C92B297005E3154 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		18FC33681C92B297005E3154 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		18FC33691C92B297005E3154 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		18FC33731C92BEB3005E3154 /* YQAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQAccount.h; sourceTree = "<group>"; };
+		18FC33741C92BEB3005E3154 /* YQAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQAccount.m; sourceTree = "<group>"; };
+		18FC33C71C943982005E3154 /* YQAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQAccountTool.h; sourceTree = "<group>"; };
+		18FC33C81C943982005E3154 /* YQAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQAccountTool.m; sourceTree = "<group>"; };
+		18FC33CB1C945624005E3154 /* YQRootTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQRootTool.h; sourceTree = "<group>"; };
+		18FC33CC1C945624005E3154 /* YQRootTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQRootTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,7 +254,6 @@
 			children = (
 				18BB966F1C75F98F00F521B9 /* AppDelegate.h */,
 				18BB96701C75F98F00F521B9 /* AppDelegate.m */,
-				18F4765C1C8FA95700EDA50A /* Lib */,
 				18BB96721C75FA3200F521B9 /* Classes */,
 				18BB96481C75F49000F521B9 /* Assets.xcassets */,
 				18BB964A1C75F49000F521B9 /* LaunchScreen.storyboard */,
@@ -275,6 +292,8 @@
 		18BB96721C75FA3200F521B9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				18FC33C51C94396A005E3154 /* Tool */,
+				18F4765C1C8FA95700EDA50A /* Lib */,
 				18FC33461C92A592005E3154 /* Oauth */,
 				18F476521C8F2B3F00EDA50A /* NewFeature(新特性) */,
 				18BB96731C75FA3200F521B9 /* Discover(发现) */,
@@ -346,6 +365,12 @@
 		18BB96791C75FA3200F521B9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1883E0041C9660AD00AC488B /* YQStatuses.h */,
+				1883E0051C9660AD00AC488B /* YQStatuses.m */,
+				1883E0071C9668FD00AC488B /* YQUser.h */,
+				1883E0081C9668FD00AC488B /* YQUser.m */,
+				1883E00A1C96700600AC488B /* YQPhoto.h */,
+				1883E00B1C96700600AC488B /* YQPhoto.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -540,7 +565,8 @@
 				18FC334D1C92A8F0005E3154 /* MBProgressHUD */,
 				18F4765D1C8FA97200EDA50A /* Masonry */,
 			);
-			path = Lib;
+			name = Lib;
+			path = ../Lib;
 			sourceTree = "<group>";
 		};
 		18F4765D1C8FA97200EDA50A /* Masonry */ = {
@@ -597,6 +623,8 @@
 		18FC334A1C92A592005E3154 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18FC33731C92BEB3005E3154 /* YQAccount.h */,
+				18FC33741C92BEB3005E3154 /* YQAccount.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -644,6 +672,33 @@
 				18FC33691C92B297005E3154 /* AFURLSessionManager.m */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		18FC33C51C94396A005E3154 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				18FC33CA1C94440A005E3154 /* Root */,
+				18FC33C61C94396A005E3154 /* Account */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		18FC33C61C94396A005E3154 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				18FC33C71C943982005E3154 /* YQAccountTool.h */,
+				18FC33C81C943982005E3154 /* YQAccountTool.m */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		18FC33CA1C94440A005E3154 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				18FC33CB1C945624005E3154 /* YQRootTool.h */,
+				18FC33CC1C945624005E3154 /* YQRootTool.m */,
+			);
+			path = Root;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -791,8 +846,11 @@
 				18BB96971C75FA9A00F521B9 /* YQTabBarButton.m in Sources */,
 				18BB96A61C75FB9D00F521B9 /* YQProfileViewController.m in Sources */,
 				18F4767A1C8FA97200EDA50A /* MASLayoutConstraint.m in Sources */,
+				18FC33C91C943982005E3154 /* YQAccountTool.m in Sources */,
 				18FC336A1C92B297005E3154 /* AFHTTPRequestOperation.m in Sources */,
 				18F4767D1C8FA97200EDA50A /* NSArray+MASAdditions.m in Sources */,
+				1883E00C1C96700600AC488B /* YQPhoto.m in Sources */,
+				1883E0091C9668FD00AC488B /* YQUser.m in Sources */,
 				18BB96B61C77063800F521B9 /* YQPopMenu.m in Sources */,
 				18FC336C1C92B297005E3154 /* AFHTTPSessionManager.m in Sources */,
 				18FC33531C92A8F0005E3154 /* MBProgressHUD+MJ.m in Sources */,
@@ -809,12 +867,15 @@
 				18BB968D1C75FA5200F521B9 /* UIImage+YQImage.m in Sources */,
 				18FC33711C92B297005E3154 /* AFURLResponseSerialization.m in Sources */,
 				18F4767B1C8FA97200EDA50A /* MASViewAttribute.m in Sources */,
+				1883E0061C9660AD00AC488B /* YQStatuses.m in Sources */,
 				18F4765B1C8FA39000EDA50A /* YQNewFeatureCell.m in Sources */,
 				18E8F03A1C8EACF7008AEA71 /* YQOneViewController.m in Sources */,
 				18FC336F1C92B297005E3154 /* AFURLConnectionOperation.m in Sources */,
 				18BB969D1C75FB6E00F521B9 /* YQDiscoverViewController.m in Sources */,
 				18BB96711C75F98F00F521B9 /* AppDelegate.m in Sources */,
+				18FC33CD1C945624005E3154 /* YQRootTool.m in Sources */,
 				18BB96B31C7705DB00F521B9 /* YQCoverView.m in Sources */,
+				18FC33751C92BEB3005E3154 /* YQAccount.m in Sources */,
 				18F476581C8F2BB500EDA50A /* YQNewFeatureController.m in Sources */,
 				18F4767E1C8FA97200EDA50A /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				18BB968E1C75FA5200F521B9 /* UIView+ZUtility.m in Sources */,
