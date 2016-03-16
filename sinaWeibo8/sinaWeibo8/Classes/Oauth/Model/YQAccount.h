@@ -29,6 +29,9 @@
 /// 账号过期时间
 @property (nonatomic, strong) NSDate *expires_date;
 
+/// 用户昵称
+@property (nonatomic, copy) NSString *name;
+
 /// 便利方法
 + (instancetype)accountWithDict:(NSDictionary *)dict;
 

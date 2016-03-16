@@ -93,59 +93,22 @@
     return YES;
 }
 
-#define YQAuthClient_id     @"3165314916"
-#define YQAuthClient_secret @"967afe2dd64a84f7be9e318e8e45ca2f"
-#define YQAuthRedirect_uri  @"http://www.baidu.com/"
+
 
 
 #pragma mark - 换取 accessToken
 /// 换取accessToken
 - (void)accessTokenWithCode:(NSString *)code {
    
-    // 创建请求对象
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    
-     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    
-    parameters[@"client_id"] = YQAuthClient_id;
-    parameters[@"client_secret"] = YQAuthClient_secret;
-    parameters[@"grant_type"] = @"authorization_code";
-    parameters[@"code"] = code;
-    parameters[@"redirect_uri"] = YQAuthRedirect_uri;
-    
-    // 错误信息 "Request failed: unacceptable content-type: text/plain"
-    // 请求失败 确实响应类型
-    //  创建一个响应类型
-//    manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObjects:@"text/plain", nil];
-    
-    
-    
-    // 发送post 请求
-    [manager POST:@"https://api.weibo.com/oauth2/access_token" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        // 成功回调
-        NSLog(@"success-- %@",responseObject);
-        
-        // 获取到数据 字典转模型
-        YQAccount *account = [YQAccount accountWithDict:responseObject];
-        
-//        // 获取沙盒路径
-//        NSString *docPath = ;
-//        
-//        // 拼接路径
-//        NSString *filePath = ;
-        
-        // 保存用户信息 （归档）
-        [YQAccountTool saveAccount:account];
-        
+    [YQAccountTool accountWithCode:code success:^{
         // 登陆成功 回调
         YQKeyWindow.rootViewController = [[YQWelcomeController alloc] init];
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failurl:^(NSError *error) {
         // 错误回调
         NSLog(@"error-- %@",error);
     }];
-    
     
 }
 @end

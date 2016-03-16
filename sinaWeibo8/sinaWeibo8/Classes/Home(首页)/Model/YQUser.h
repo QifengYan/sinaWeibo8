@@ -11,9 +11,9 @@
 @interface YQUser : NSObject
 
 /// 用户昵称
-@property (nonatomic, copy) NSString *screen_name;
+@property (nonatomic, copy) NSString *name;
 
 /// 用户头像地址
-@property (nonatomic, copy) NSString *profile_image_url;
+@property (nonatomic, strong) NSURL *profile_image_url;
 
 @end

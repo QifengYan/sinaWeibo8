@@ -10,4 +10,7 @@
 
 @interface YQHomeViewController : UITableViewController
 
+/// 刷新界面
+- (void)refresh;
+
 @end

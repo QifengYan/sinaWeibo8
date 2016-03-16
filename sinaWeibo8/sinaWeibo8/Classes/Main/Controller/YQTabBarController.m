@@ -14,10 +14,20 @@
 #import "YQMessageViewController.h"
 #import "YQProfileViewController.h"
 #import "YQNavigationController.h"
+#import "YQUserTool.h"
+#import "YQUserResult.h"
 
 @interface YQTabBarController ()
 
 @property (nonatomic, strong) NSMutableArray *items;
+
+@property (nonatomic,weak) YQHomeViewController *homeVC;
+
+@property (nonatomic,weak) YQMessageViewController *messageVC;
+
+@property (nonatomic,weak) YQDiscoverViewController *discoverVC;
+
+@property (nonatomic,weak) YQProfileViewController *profileVC;
 
 @end
 
@@ -44,6 +54,31 @@
     
     // 加载自定义的tabBar
     [self setupTabBar];
+    
+    // 每隔一段时间请求数据
+    NSTimer *time = [NSTimer timerWithTimeInterval:2 target:self selector:@selector(requestUnread) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:time forMode:NSRunLoopCommonModes];
+    
+}
+
+#pragma mark - 请求未读数
+- (void)requestUnread {
+//    NSLog(@"%s",__func__);
+    
+    [YQUserTool unreadWithUrl:@"https://rm.api.weibo.com/2/remind/unread_count.json" success:^(YQUserResult *result) {
+        
+        _homeVC.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",result.status];
+        
+        _messageVC.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",result.messageCount];
+        
+        _profileVC.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",result.follower];
+        
+        // 设置应用程序的未读数
+        [UIApplication sharedApplication].applicationIconBadgeNumber = result.totalCount;
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark - 加载自定义tabBar
@@ -54,6 +89,11 @@
     tabBar.items = self.items;
     
     [tabBar setDidSelectedBtn:^(NSUInteger index) {
+        
+        if (index == 0 && self.selectedIndex == index) {
+            [_homeVC refresh];
+        }
+        
         self.selectedIndex = index;
     }];
     
@@ -90,22 +130,26 @@
     // 主界面
     YQHomeViewController *homeVC = [[YQHomeViewController alloc] init];
     [self setupOneChildViewController:homeVC image:[UIImage imageNamed:@"tabbar_home"] selectedImage:[UIImage imageWithOriginalNamed:@"tabbar_home_selected"] title:@"主页"];
+    _homeVC = homeVC;
     
     // 消息
     YQMessageViewController *messageVC = [[YQMessageViewController alloc] init];
 //    messageVC.tabBarItem.title = @"消息";
 //    [self addChildViewController:messageVC];
     [self setupOneChildViewController:messageVC image:[UIImage imageNamed:@"tabbar_message_center"] selectedImage:[UIImage imageWithOriginalNamed:@"tabbar_message_center_selected"] title:@"消息"];
+    _messageVC = messageVC;
     
     // 发现
     YQDiscoverViewController *discoverVC = [[YQDiscoverViewController alloc] init];
 //    [self addChildViewController:discoverVC];
     [self setupOneChildViewController:discoverVC image:[UIImage imageNamed:@"tabbar_discover"] selectedImage:[UIImage imageWithOriginalNamed:@"tabbar_discover_selected"] title:@"发现"];
+    _discoverVC = discoverVC;
     
     // 我
     YQProfileViewController *profileVC = [[YQProfileViewController alloc] init];
 //    [self addChildViewController:profileVC];tabbar_profile
     [self setupOneChildViewController:profileVC image:[UIImage imageNamed:@"tabbar_profile"] selectedImage:[UIImage imageWithOriginalNamed:@"tabbar_profile_selected"] title:@"我"];
+    _profileVC = profileVC;
 
 }
  

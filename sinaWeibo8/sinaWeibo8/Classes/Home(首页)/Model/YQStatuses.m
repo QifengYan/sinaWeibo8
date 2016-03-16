@@ -7,7 +7,12 @@
 //
 
 #import "YQStatuses.h"
+#import "YQPhoto.h"
 
 @implementation YQStatuses
+
++ (NSDictionary *)mj_objectClassInArray {
+    return @{@"pic_urls" : [YQPhoto class]};
+}
 
 @end

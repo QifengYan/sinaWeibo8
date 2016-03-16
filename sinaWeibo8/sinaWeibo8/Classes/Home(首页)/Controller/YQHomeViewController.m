@@ -16,6 +16,16 @@
 #import "AFNetworking.h"
 #import "YQAccountTool.h"
 #import "YQAccount.h"
+#import "MJExtension.h"
+#import "YQStatuses.h"
+#import "UIImageView+WebCache.h"
+#import "MJRefresh.h"
+#import "YQHttpTool.h"
+#import "YQAccount.h"
+#import "YQAccountTool.h"
+
+#import "YQStatusTool.h"
+#import "YQUserTool.h"
 
 @interface YQHomeViewController ()<YQCoverViewDelegate>
 
@@ -23,9 +33,13 @@
 
 @property (nonatomic, strong) YQOneViewController *one;
 
+@property (nonatomic, strong) NSMutableArray *statuses;
+
 @end
 
 @implementation YQHomeViewController
+
+static NSString *ID = @"cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,24 +48,89 @@
     [self setupNavigationItem];
     
     // 获取网络数据
-    [self loadNewStatus];
+//    [self loadNewStatus];
+    
+    // 注册cell
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
+    
+    // 下拉刷星
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewStatus)];
+    
+    // 开启下拉刷新
+    [self.tableView.mj_header beginRefreshing];
+    
+    // 上拉加载跟多
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreStatus)];
+    
+    [YQUserTool usersInfoWithUrl:@"https://api.weibo.com/2/users/show.json" success:^(YQUser *user) {
+        
+        // 设置标题
+        [self.titleButton setTitle:user.name forState:UIControlStateNormal];
+        
+        // 获取账号 保存用户昵称
+        YQAccount *account = [YQAccountTool account];
+        account.name = user.name;
+        
+        [YQAccountTool saveAccount:account];
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
 }
 
-#pragma mark - 获取网络数据
+- (void)refresh {
+    [self.tableView.mj_header beginRefreshing];
+}
+
+#pragma mark - 获取最新微博数据
 - (void)loadNewStatus {
-    // 创建网络请求对象
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    // 发送网络请求
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"access_token"] = [YQAccountTool account].access_token;
+    NSString *sinceId = nil;
+    if (self.statuses.count) {
+        sinceId = [self.statuses[0] idstr];
+    }
     
-    [manager GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [YQStatusTool newStatusWithSinceId:sinceId success:^(NSArray *statuses) {
+        // 结束下拉刷新
+        [self.tableView.mj_header endRefreshing];
         
-        NSLog(@"获取用户数据：%@",responseObject);
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, statuses.count)];
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
+        [self.statuses insertObjects:statuses atIndexes:indexSet];
+        
+        // 刷新数据
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        NSLog(@"数据请求失败--%@",error);
+    }];
+}
+
+#pragma mark - 上拉加载更多
+
+- (void)loadMoreStatus {
+    
+    NSString *maxId = nil;
+    if (self.statuses.count) {
+        long long maxID = [[[self.statuses lastObject] idstr] longLongValue] - 1;
+        
+        maxId = [NSString stringWithFormat:@"%lld",maxID];
+    }
+    
+    [YQStatusTool moreStatusWithMaxId:maxId success:^(NSArray *statuses) {
+        
+        // 结束下拉刷新
+        [self.tableView.mj_footer endRefreshing];
+        
+        [self.statuses addObjectsFromArray:statuses];
+        
+        // 刷新数据
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        NSLog(@"获取数据失败：error%@",error);
     }];
 }
 
@@ -72,7 +151,9 @@
     YQTitleButton *btn = [YQTitleButton buttonWithType:UIButtonTypeCustom];
     _titleButton = btn;
     btn.adjustsImageWhenHighlighted = NO;// 取消按钮点击时候图片高亮效果
-    [btn setTitle:@"首页" forState:UIControlStateNormal];
+    NSLog(@"name -- %@",[YQAccountTool account].name);
+    NSString *title = [YQAccountTool account].name ?  : @"首页";
+    [btn setTitle:title forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:@"navigationbar_arrow_up"] forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateSelected];
     [btn sizeToFit];
@@ -131,12 +212,37 @@
 
 #pragma mark - 控制器懒加载
 
-- (YQOneViewController *)one
-{
+- (YQOneViewController *)one{
     if (_one == nil) {
         _one = [[YQOneViewController alloc] init];
     }
     return _one;
+}
+
+-  (NSMutableArray *)statuses {
+    if (_statuses == nil) {
+        _statuses = [NSMutableArray array];
+    }
+    return _statuses;
+}
+
+ #pragma mark - 数据源方法
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.statuses.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    
+    YQStatuses *status = self.statuses[indexPath.row];
+    
+    cell.textLabel.text = status.user.name;
+    
+    [cell.imageView sd_setImageWithURL:status.user.profile_image_url placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+    
+//    cell.detailTextLabel.text = status.text;
+    
+    return cell;
 }
 
 @end

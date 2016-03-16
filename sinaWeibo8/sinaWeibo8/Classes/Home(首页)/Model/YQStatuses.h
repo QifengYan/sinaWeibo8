@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "YQUser.h"
+#import "MJExtension.h"
 /*
  idstr	string	字符串型的微博ID
  text	string	微博信息内容
@@ -19,7 +20,7 @@
  attitudes_count	int	表态数
  pic_urls  微博配图
  */
-@interface YQStatuses : NSObject
+@interface YQStatuses : NSObject<MJKeyValue >
 
 /// 用户信息
 @property (nonatomic, strong) YQUser *user;
