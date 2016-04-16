@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1807FE411CC0C862009F8C0D /* NSDate+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807FE401CC0C862009F8C0D /* NSDate+MJ.m */; };
 		1883E0061C9660AD00AC488B /* YQStatuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 1883E0051C9660AD00AC488B /* YQStatuses.m */; };
 		1883E0091C9668FD00AC488B /* YQUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1883E0081C9668FD00AC488B /* YQUser.m */; };
 		1883E00C1C96700600AC488B /* YQPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1883E00B1C96700600AC488B /* YQPhoto.m */; };
@@ -64,10 +65,14 @@
 		1883E0BA1C97F61A00AC488B /* YQUserResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1883E0B91C97F61A00AC488B /* YQUserResult.m */; };
 		1883E0BD1C97F83300AC488B /* YQUserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1883E0BC1C97F83300AC488B /* YQUserTool.m */; };
 		1883E0C91C98094D00AC488B /* YQHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1883E0C61C98094D00AC488B /* YQHeaderView.m */; };
-		1883E0CA1C98094D00AC488B /* YQStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1883E0C81C98094D00AC488B /* YQStatusCell.m */; };
 		1883E0CE1C98246C00AC488B /* silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1883E0CC1C98246C00AC488B /* silence.mp3 */; };
 		1883E0CF1C98246C00AC488B /* 爸比我要喝奶奶.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1883E0CD1C98246C00AC488B /* 爸比我要喝奶奶.mp3 */; };
 		1883E0D11C9828FF00AC488B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1883E0D01C9828FF00AC488B /* AVFoundation.framework */; };
+		189CD6B91CB78A8900B41262 /* YQStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CD6B81CB78A8900B41262 /* YQStatusCell.m */; };
+		189CD6BC1CB78BAF00B41262 /* YQOriginalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CD6BB1CB78BAF00B41262 /* YQOriginalView.m */; };
+		189CD6BF1CB78C0100B41262 /* YQTransmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CD6BE1CB78C0100B41262 /* YQTransmitView.m */; };
+		189CD6C21CB78C1E00B41262 /* YQStatuesToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CD6C11CB78C1E00B41262 /* YQStatuesToolView.m */; };
+		189CD6C61CB79D4A00B41262 /* YQStatusViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CD6C51CB79D4A00B41262 /* YQStatusViewModel.m */; };
 		18BB963E1C75F49000F521B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB963D1C75F49000F521B9 /* main.m */; };
 		18BB96491C75F49000F521B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18BB96481C75F49000F521B9 /* Assets.xcassets */; };
 		18BB964C1C75F49000F521B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BB964A1C75F49000F521B9 /* LaunchScreen.storyboard */; };
@@ -141,6 +146,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1807FE3F1CC0C862009F8C0D /* NSDate+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MJ.h"; sourceTree = "<group>"; };
+		1807FE401CC0C862009F8C0D /* NSDate+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MJ.m"; sourceTree = "<group>"; };
 		1883E0041C9660AD00AC488B /* YQStatuses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQStatuses.h; sourceTree = "<group>"; };
 		1883E0051C9660AD00AC488B /* YQStatuses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQStatuses.m; sourceTree = "<group>"; };
 		1883E0071C9668FD00AC488B /* YQUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQUser.h; sourceTree = "<group>"; };
@@ -257,11 +264,19 @@
 		1883E0BC1C97F83300AC488B /* YQUserTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQUserTool.m; sourceTree = "<group>"; };
 		1883E0C51C98094D00AC488B /* YQHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQHeaderView.h; sourceTree = "<group>"; };
 		1883E0C61C98094D00AC488B /* YQHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQHeaderView.m; sourceTree = "<group>"; };
-		1883E0C71C98094D00AC488B /* YQStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQStatusCell.h; sourceTree = "<group>"; };
-		1883E0C81C98094D00AC488B /* YQStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQStatusCell.m; sourceTree = "<group>"; };
 		1883E0CC1C98246C00AC488B /* silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = silence.mp3; sourceTree = "<group>"; };
 		1883E0CD1C98246C00AC488B /* 爸比我要喝奶奶.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "爸比我要喝奶奶.mp3"; sourceTree = "<group>"; };
 		1883E0D01C9828FF00AC488B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		189CD6B71CB78A8900B41262 /* YQStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQStatusCell.h; sourceTree = "<group>"; };
+		189CD6B81CB78A8900B41262 /* YQStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQStatusCell.m; sourceTree = "<group>"; };
+		189CD6BA1CB78BAF00B41262 /* YQOriginalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQOriginalView.h; sourceTree = "<group>"; };
+		189CD6BB1CB78BAF00B41262 /* YQOriginalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQOriginalView.m; sourceTree = "<group>"; };
+		189CD6BD1CB78C0100B41262 /* YQTransmitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQTransmitView.h; sourceTree = "<group>"; };
+		189CD6BE1CB78C0100B41262 /* YQTransmitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQTransmitView.m; sourceTree = "<group>"; };
+		189CD6C01CB78C1E00B41262 /* YQStatuesToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQStatuesToolView.h; sourceTree = "<group>"; };
+		189CD6C11CB78C1E00B41262 /* YQStatuesToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQStatuesToolView.m; sourceTree = "<group>"; };
+		189CD6C41CB79D4A00B41262 /* YQStatusViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQStatusViewModel.h; sourceTree = "<group>"; };
+		189CD6C51CB79D4A00B41262 /* YQStatusViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQStatusViewModel.m; sourceTree = "<group>"; };
 		18BB96391C75F49000F521B9 /* sinaWeibo8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sinaWeibo8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BB963D1C75F49000F521B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18BB96481C75F49000F521B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -295,7 +310,6 @@
 		18BB96A21C75FB8E00F521B9 /* YQMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQMessageViewController.m; sourceTree = "<group>"; };
 		18BB96A41C75FB9D00F521B9 /* YQProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQProfileViewController.h; sourceTree = "<group>"; };
 		18BB96A51C75FB9D00F521B9 /* YQProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQProfileViewController.m; sourceTree = "<group>"; };
-		18BB96A71C75FBD900F521B9 /* sinaWeibo.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sinaWeibo.pch; sourceTree = "<group>"; };
 		18BB96A81C760ED300F521B9 /* UIBarButtonItem+item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+item.h"; sourceTree = "<group>"; };
 		18BB96A91C760ED300F521B9 /* UIBarButtonItem+item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+item.m"; sourceTree = "<group>"; };
 		18BB96AB1C761A6F00F521B9 /* YQTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQTitleButton.h; sourceTree = "<group>"; };
@@ -304,6 +318,7 @@
 		18BB96B21C7705DB00F521B9 /* YQCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQCoverView.m; sourceTree = "<group>"; };
 		18BB96B41C77063800F521B9 /* YQPopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQPopMenu.h; sourceTree = "<group>"; };
 		18BB96B51C77063800F521B9 /* YQPopMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQPopMenu.m; sourceTree = "<group>"; };
+		18BE74351CBBF0E200C51487 /* sinaWeibo.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sinaWeibo.pch; sourceTree = "<group>"; };
 		18E8F0381C8EACF7008AEA71 /* YQOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQOneViewController.h; sourceTree = "<group>"; };
 		18E8F0391C8EACF7008AEA71 /* YQOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQOneViewController.m; sourceTree = "<group>"; };
 		18F476461C8ED97700EDA50A /* YQNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQNavigationController.h; sourceTree = "<group>"; };
@@ -636,8 +651,6 @@
 			children = (
 				1883E0C51C98094D00AC488B /* YQHeaderView.h */,
 				1883E0C61C98094D00AC488B /* YQHeaderView.m */,
-				1883E0C71C98094D00AC488B /* YQStatusCell.h */,
-				1883E0C81C98094D00AC488B /* YQStatusCell.m */,
 			);
 			path = cellView;
 			sourceTree = "<group>";
@@ -649,6 +662,30 @@
 				1883E0CD1C98246C00AC488B /* 爸比我要喝奶奶.mp3 */,
 			);
 			path = Mp3;
+			sourceTree = "<group>";
+		};
+		189CD6B61CB78A8900B41262 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				189CD6B71CB78A8900B41262 /* YQStatusCell.h */,
+				189CD6B81CB78A8900B41262 /* YQStatusCell.m */,
+				189CD6BA1CB78BAF00B41262 /* YQOriginalView.h */,
+				189CD6BB1CB78BAF00B41262 /* YQOriginalView.m */,
+				189CD6BD1CB78C0100B41262 /* YQTransmitView.h */,
+				189CD6BE1CB78C0100B41262 /* YQTransmitView.m */,
+				189CD6C01CB78C1E00B41262 /* YQStatuesToolView.h */,
+				189CD6C11CB78C1E00B41262 /* YQStatuesToolView.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		189CD6C31CB79D1E00B41262 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				189CD6C41CB79D4A00B41262 /* YQStatusViewModel.h */,
+				189CD6C51CB79D4A00B41262 /* YQStatusViewModel.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		18BB96301C75F49000F521B9 = {
@@ -789,6 +826,7 @@
 		18BB96791C75FA3200F521B9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				189CD6C31CB79D1E00B41262 /* ViewModel */,
 				1883E0041C9660AD00AC488B /* YQStatuses.h */,
 				1883E0051C9660AD00AC488B /* YQStatuses.m */,
 				1883E0071C9668FD00AC488B /* YQUser.h */,
@@ -802,6 +840,7 @@
 		18BB967A1C75FA3200F521B9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				189CD6B61CB78A8900B41262 /* Cell */,
 				18BB96B41C77063800F521B9 /* YQPopMenu.h */,
 				18BB96B51C77063800F521B9 /* YQPopMenu.m */,
 				18BB96AB1C761A6F00F521B9 /* YQTitleButton.h */,
@@ -891,7 +930,7 @@
 		18BB96831C75FA3200F521B9 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				18BB96A71C75FBD900F521B9 /* sinaWeibo.pch */,
+				18BE74351CBBF0E200C51487 /* sinaWeibo.pch */,
 				18BB96841C75FA3200F521B9 /* Category */,
 			);
 			path = Other;
@@ -900,6 +939,8 @@
 		18BB96841C75FA3200F521B9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1807FE3F1CC0C862009F8C0D /* NSDate+MJ.h */,
+				1807FE401CC0C862009F8C0D /* NSDate+MJ.m */,
 				18BB96891C75FA5200F521B9 /* UIImage+YQImage.h */,
 				18BB968A1C75FA5200F521B9 /* UIImage+YQImage.m */,
 				18BB968B1C75FA5200F521B9 /* UIView+ZUtility.h */,
@@ -1290,6 +1331,7 @@
 				1883E05D1C96843300AC488B /* UIImageView+WebCache.m in Sources */,
 				1883E0961C9690EF00AC488B /* MJRefreshBackStateFooter.m in Sources */,
 				1883E02B1C96713C00AC488B /* NSObject+MJProperty.m in Sources */,
+				189CD6BF1CB78C0100B41262 /* YQTransmitView.m in Sources */,
 				18F476481C8ED97700EDA50A /* YQNavigationController.m in Sources */,
 				18BB969A1C75FAAB00F521B9 /* YQBadgeView.m in Sources */,
 				18BB96971C75FA9A00F521B9 /* YQTabBarButton.m in Sources */,
@@ -1302,10 +1344,12 @@
 				1883E0911C9690EF00AC488B /* MJRefreshAutoGifFooter.m in Sources */,
 				18FC33C91C943982005E3154 /* YQAccountTool.m in Sources */,
 				1883E0591C96843300AC488B /* UIImage+GIF.m in Sources */,
+				189CD6C61CB79D4A00B41262 /* YQStatusViewModel.m in Sources */,
 				1883E08C1C9690EF00AC488B /* MJRefreshAutoFooter.m in Sources */,
 				1883E0531C96843300AC488B /* SDWebImageDecoder.m in Sources */,
 				18FC336A1C92B297005E3154 /* AFHTTPRequestOperation.m in Sources */,
 				1883E0521C96843300AC488B /* SDWebImageCompat.m in Sources */,
+				189CD6BC1CB78BAF00B41262 /* YQOriginalView.m in Sources */,
 				1883E0991C9690EF00AC488B /* MJRefreshStateHeader.m in Sources */,
 				18F4767D1C8FA97200EDA50A /* NSArray+MASAdditions.m in Sources */,
 				1883E00C1C96700600AC488B /* YQPhoto.m in Sources */,
@@ -1322,6 +1366,7 @@
 				18BB96911C75FA8900F521B9 /* YQTabBarController.m in Sources */,
 				18FC334C1C92A592005E3154 /* YQOauthController.m in Sources */,
 				18F476781C8FA97200EDA50A /* MASConstraint.m in Sources */,
+				189CD6C21CB78C1E00B41262 /* YQStatuesToolView.m in Sources */,
 				18BB96A31C75FB8E00F521B9 /* YQMessageViewController.m in Sources */,
 				1883E0A21C96B00A00AC488B /* YQHttpTool.m in Sources */,
 				18F4767C1C8FA97200EDA50A /* MASViewConstraint.m in Sources */,
@@ -1333,7 +1378,6 @@
 				18BB968D1C75FA5200F521B9 /* UIImage+YQImage.m in Sources */,
 				18FC33711C92B297005E3154 /* AFURLResponseSerialization.m in Sources */,
 				1883E0A61C96F5F500AC488B /* YQStatusTool.m in Sources */,
-				1883E0CA1C98094D00AC488B /* YQStatusCell.m in Sources */,
 				1883E0281C96713C00AC488B /* NSObject+MJClass.m in Sources */,
 				1883E0271C96713C00AC488B /* MJPropertyType.m in Sources */,
 				18F4767B1C8FA97200EDA50A /* MASViewAttribute.m in Sources */,
@@ -1355,6 +1399,7 @@
 				1883E0B71C97F51A00AC488B /* YQUserParam.m in Sources */,
 				1883E0541C96843300AC488B /* SDWebImageDownloader.m in Sources */,
 				18BB96711C75F98F00F521B9 /* AppDelegate.m in Sources */,
+				189CD6B91CB78A8900B41262 /* YQStatusCell.m in Sources */,
 				18FC33CD1C945624005E3154 /* YQRootTool.m in Sources */,
 				1883E0C91C98094D00AC488B /* YQHeaderView.m in Sources */,
 				1883E05E1C96843300AC488B /* UIView+WebCacheOperation.m in Sources */,
@@ -1381,6 +1426,7 @@
 				1883E0941C9690EF00AC488B /* MJRefreshBackGifFooter.m in Sources */,
 				18FC336B1C92B297005E3154 /* AFHTTPRequestOperationManager.m in Sources */,
 				18BB96961C75FA9A00F521B9 /* YQTabBar.m in Sources */,
+				1807FE411CC0C862009F8C0D /* NSDate+MJ.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1453,6 +1499,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = /Users/apple/Desktop/git/sinaWeibo8/sinaWeibo8/sinaWeibo8/Classes/Other/sinaWeibo.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1494,6 +1542,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = /Users/apple/Desktop/git/sinaWeibo8/sinaWeibo8/sinaWeibo8/Classes/Other/sinaWeibo.pch;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

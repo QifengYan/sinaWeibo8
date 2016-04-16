@@ -20,6 +20,14 @@
 
 #define YQKeyWindow [UIApplication sharedApplication].keyWindow
 
+/****************************** cell ******************************/
+
+#define YQStatusMargin 10
+#define YQNameFont [UIFont systemFontOfSize:15]
+#define YQTimeFont [UIFont systemFontOfSize:12]
+#define YQSourceFont YQTimeFont
+#define YQTextFont [UIFont systemFontOfSize:16]
+#define YQScreenWidth [UIScreen mainScreen].bounds.size.width
 
 
 #endif

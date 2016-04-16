@@ -10,4 +10,9 @@
 
 @implementation YQUser
 
+- (void)setMbtype:(int)mbtype {
+    _mbrank = mbtype;
+    _vip = _mbrank > 2;
+}
+
 @end

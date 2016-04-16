@@ -26,6 +26,8 @@
 
 #import "YQStatusTool.h"
 #import "YQUserTool.h"
+#import "YQStatusCell.h"
+#import "YQStatusViewModel.h"
 
 @interface YQHomeViewController ()<YQCoverViewDelegate>
 
@@ -33,25 +35,34 @@
 
 @property (nonatomic, strong) YQOneViewController *one;
 
-@property (nonatomic, strong) NSMutableArray *statuses;
+
+/**
+ *  VM：视图模型 YQStatusViewModel
+ */
+@property (nonatomic, strong) NSMutableArray<YQStatusViewModel *> *statusFrame;
 
 @end
 
 @implementation YQHomeViewController
 
-static NSString *ID = @"cell";
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.backgroundColor = [UIColor lightGrayColor];
+    
     // 添加item
     [self setupNavigationItem];
+    
+    // 取消分隔新
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     // 获取网络数据
 //    [self loadNewStatus];
     
-    // 注册cell
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
+//    // 注册cell
+//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
     
     // 下拉刷星
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewStatus)];
@@ -61,6 +72,7 @@ static NSString *ID = @"cell";
     
     // 上拉加载跟多
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreStatus)];
+    
     
     [YQUserTool usersInfoWithUrl:@"https://api.weibo.com/2/users/show.json" success:^(YQUser *user) {
         
@@ -88,17 +100,33 @@ static NSString *ID = @"cell";
 - (void)loadNewStatus {
     
     NSString *sinceId = nil;
-    if (self.statuses.count) {
-        sinceId = [self.statuses[0] idstr];
+    if (self.statusFrame.count) {
+        YQStatuses *status = [self.statusFrame[0] status]; // 取出视图模型中的 数据模型
+        sinceId = [status idstr];
     }
     
     [YQStatusTool newStatusWithSinceId:sinceId success:^(NSArray *statuses) {
+        
+        // 显示刷新的数据
+        [self showNewStatusCount:statuses.count];
+        
         // 结束下拉刷新
         [self.tableView.mj_header endRefreshing];
+        // ???:??? 视图模型更改
+        // 包装数据模型 -> 视图模型
+        NSMutableArray *statusFrame = [NSMutableArray array];
+        // 遍历传过来的数组
+        for (YQStatuses *status in statuses) {
+            // 创建视图模型
+            YQStatusViewModel *statusF = [[YQStatusViewModel alloc] init];
+            statusF.status = status;
+            [statusFrame addObject:statusF];
+        }
+        
         
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, statuses.count)];
         
-        [self.statuses insertObjects:statuses atIndexes:indexSet];
+        [self.statusFrame insertObjects:statusFrame atIndexes:indexSet];
         
         // 刷新数据
         [self.tableView reloadData];
@@ -113,8 +141,9 @@ static NSString *ID = @"cell";
 - (void)loadMoreStatus {
     
     NSString *maxId = nil;
-    if (self.statuses.count) {
-        long long maxID = [[[self.statuses lastObject] idstr] longLongValue] - 1;
+    if (self.statusFrame.count) {
+        YQStatuses *status = [self.statusFrame[0] status];
+        long long maxID = [[status idstr] longLongValue] - 1;
         
         maxId = [NSString stringWithFormat:@"%lld",maxID];
     }
@@ -124,7 +153,16 @@ static NSString *ID = @"cell";
         // 结束下拉刷新
         [self.tableView.mj_footer endRefreshing];
         
-        [self.statuses addObjectsFromArray:statuses];
+        NSMutableArray *statusFrame = [NSMutableArray array];
+        // 遍历传过来的数组
+        for (YQStatuses *status in statuses) {
+            // 创建视图模型
+            YQStatusViewModel *statusF = [[YQStatusViewModel alloc] init];
+            statusF.status = status;
+            [statusFrame addObject:statusF];
+        }
+        
+        [self.statusFrame addObjectsFromArray:statusFrame];
         
         // 刷新数据
         [self.tableView reloadData];
@@ -134,7 +172,42 @@ static NSString *ID = @"cell";
     }];
 }
 
-
+#pragma mark - 显示最新的微博数据
+- (void)showNewStatusCount:(NSInteger)count {
+    
+//    if (count == 0) {
+//        return;
+//    }
+    
+    CGFloat x = 0;
+    CGFloat h = 35;
+    CGFloat y = CGRectGetMaxY(self.navigationController.navigationBar.frame) - h;
+    CGFloat w = self.navigationController.navigationBar.width;
+    
+    UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(x, y, w, h)];
+    lable.text = [NSString stringWithFormat:@"最新微博数%ld",count];
+    lable.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timeline_new_status_background"]];
+    lable.textAlignment = NSTextAlignmentCenter;
+    // 插入到 navigationBar 上
+    [self.navigationController.view insertSubview:lable belowSubview:self.navigationController.navigationBar];
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        lable.transform = CGAffineTransformMakeTranslation(0, y);
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:0.25 delay:2 options:UIViewAnimationOptionCurveLinear animations:^{
+            // 还原
+            lable.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            // 移除Lable
+            [lable removeFromSuperview];
+        }];
+        
+    }];
+    
+}
 #pragma mark - 添加左右按钮
 /**
  *  添加item
@@ -210,6 +283,38 @@ static NSString *ID = @"cell";
     
 }
 
+ #pragma mark - 数据源方法
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.statusFrame.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    static NSString *ID = @"cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+//    }
+    YQStatusCell *cell = [YQStatusCell statusCellWithTableView:tableView];
+    
+    YQStatusViewModel *statusF = self.statusFrame[indexPath.row];
+    
+    cell.statuesF = statusF;
+    
+//    cell.textLabel.text = status.user.name;
+//    
+//    [cell.imageView sd_setImageWithURL:status.user.profile_image_url placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+    
+//    cell.detailTextLabel.text = status.text;
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    YQStatusViewModel *statusF = self.statusFrame[indexPath.row];
+    
+    return  statusF.cellHeight;
+}
+
 #pragma mark - 控制器懒加载
 
 - (YQOneViewController *)one{
@@ -219,30 +324,11 @@ static NSString *ID = @"cell";
     return _one;
 }
 
--  (NSMutableArray *)statuses {
-    if (_statuses == nil) {
-        _statuses = [NSMutableArray array];
+-  (NSMutableArray *)statusFrame {
+    if (_statusFrame == nil) {
+        _statusFrame = [NSMutableArray array];
     }
-    return _statuses;
-}
-
- #pragma mark - 数据源方法
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.statuses.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    
-    YQStatuses *status = self.statuses[indexPath.row];
-    
-    cell.textLabel.text = status.user.name;
-    
-    [cell.imageView sd_setImageWithURL:status.user.profile_image_url placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
-    
-//    cell.detailTextLabel.text = status.text;
-    
-    return cell;
+    return _statusFrame;
 }
 
 @end

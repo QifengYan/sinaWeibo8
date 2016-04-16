@@ -16,4 +16,13 @@
 /// 用户头像地址
 @property (nonatomic, strong) NSURL *profile_image_url;
 
+/// 会员类型 > 2 代表是会员
+@property (assign, nonatomic) int mbtype;
+
+/// 会员等级
+@property (assign, nonatomic) int mbrank;
+
+/// 判断是否是会员
+@property (assign, nonatomic,getter=isVip) BOOL vip;
+
 @end

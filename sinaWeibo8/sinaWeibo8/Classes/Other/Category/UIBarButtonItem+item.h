@@ -10,6 +10,7 @@
 
 @interface UIBarButtonItem (item)
 
+/// 导航栏按钮分类
 + (instancetype)barButtonItemWithImage:(UIImage *)image highlightedImage:(UIImage *)highlighteImage target:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
 
 @end
