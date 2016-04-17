@@ -80,7 +80,7 @@
 - (void)setStatusF:(YQStatusViewModel *)statusF {
     _statusF = statusF;
     _nameView.frame = statusF.transmitNameFrame;
-    _nameView.text = statusF.status.retweeted_status.user.name;
+    _nameView.text = statusF.status.retweetName;
     _textView.frame = statusF.transmitTextFrame;
     _textView.text = statusF.status.retweeted_status.text;
 }

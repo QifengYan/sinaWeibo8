@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YQStatuses;
+@interface YQStatuesToolView : UIImageView
 
-@interface YQStatuesToolView : UIView
+@property (strong, nonatomic) YQStatuses *status;
 
 @end

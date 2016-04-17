@@ -59,7 +59,7 @@
     
     // 添加工具条
     YQStatuesToolView *toolView = [[YQStatuesToolView alloc] init];
-    toolView.backgroundColor = [UIColor redColor];
+//    toolView.backgroundColor = [UIColor redColor];
     [self addSubview:toolView];
     _toolView = toolView;
 }
@@ -70,9 +70,12 @@
     
     _originalView.frame = statuesF.originalViewFrame;
     _originalView.statusF = _statuesF;
+    
     _transmitView.frame = statuesF.transmitViewFrame;
     _transmitView.statusF = _statuesF;
+    
     _toolView.frame = statuesF.toolFrame;
+    _toolView.status = statuesF.status;
     
 }
 

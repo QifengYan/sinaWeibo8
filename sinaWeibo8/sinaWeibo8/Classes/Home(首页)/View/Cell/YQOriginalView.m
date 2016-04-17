@@ -65,12 +65,14 @@
     // 时间
     UILabel *timeView = [[UILabel alloc] init];
     timeView.font = YQTimeFont;
+    timeView.textColor = [UIColor orangeColor];
     [self addSubview:timeView];
     _timeView = timeView;
     
     // 来源
     UILabel *sourceView = [[UILabel alloc] init];
     sourceView.font = YQSourceFont;
+    sourceView.textColor = [UIColor lightGrayColor];
     [self addSubview:sourceView];
     _sourceView = sourceView;
     
@@ -106,6 +108,7 @@
     
     // 时间
     _timeView.text = _statusF.status.created_at;
+//    _timeView.textColor = [UIColor orangeColor];
     
     // 来源
     _sourceView.text = _statusF.status.source;
@@ -127,15 +130,29 @@
     if (_statusF.status.user.vip) {
         _vipView.hidden = NO;
         _vipView.frame = _statusF.originalVipFrame;
+        _nameView.textColor = [UIColor redColor];
     } else {
         _vipView.hidden = YES;
+        _nameView.textColor = [UIColor blackColor];
     }
+#warning 时间的frame  和来源的frame  要更新
+//    // 时间
+//    _timeView.frame = _statusF.originalTimeFrame;
     
     // 时间
-    _timeView.frame = _statusF.originalTimeFrame;
+    CGFloat timeX = _nameView.frame.origin.x;
+    CGFloat timeY = CGRectGetMaxY(_nameView.frame) + YQStatusMargin * 0.5;
+    CGSize timeSize = [_statusF.status.created_at sizeWithFont:YQTimeFont];
+    _timeView.frame = (CGRect){{timeX,timeY},timeSize};
     
     // 来源
-    _sourceView.frame = _statusF.originalSourceFrame;
+    CGFloat sourceX = CGRectGetMaxX(_timeView.frame) + YQStatusMargin;
+    CGFloat sourceY = timeY;
+    CGSize sourceSize = [_statusF.status.source sizeWithFont:YQSourceFont];
+    _sourceView.frame = (CGRect){{sourceX,sourceY},sourceSize};
+    
+    // 来源
+//    _sourceView.frame = _statusF.originalSourceFrame;
     
     // 正文
     _textView.frame = _statusF.originalTextFrame;

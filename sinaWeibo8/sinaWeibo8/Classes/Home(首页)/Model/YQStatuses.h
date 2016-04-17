@@ -28,6 +28,9 @@
 /// 转发的微博
 @property (nonatomic, strong) YQStatuses *retweeted_status;
 
+/// 转发微博的名字（新增属性）
+@property (copy, nonatomic) NSString *retweetName;
+
 /// 微博创建时间
 @property (nonatomic, copy) NSString *created_at;
 

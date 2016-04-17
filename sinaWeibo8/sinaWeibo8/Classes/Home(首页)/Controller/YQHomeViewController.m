@@ -197,7 +197,7 @@
         
     } completion:^(BOOL finished) {
         
-        [UIView animateWithDuration:0.25 delay:2 options:UIViewAnimationOptionCurveLinear animations:^{
+        [UIView animateWithDuration:0.25 delay:1 options:UIViewAnimationOptionCurveLinear animations:^{
             // 还原
             lable.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {

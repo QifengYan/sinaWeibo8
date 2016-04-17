@@ -60,17 +60,17 @@
         _originalVipFrame = CGRectMake(vipX, vipY, vipWH, vipWH);
     }
     
-    // 时间
-    CGFloat timeX = nameX;
-    CGFloat timeY = CGRectGetMaxY(_originalNameFrame) + YQStatusMargin * 0.5;
-    CGSize timeSize = [_status.created_at sizeWithFont:YQTimeFont];
-    _originalTimeFrame = (CGRect){{timeX,timeY},timeSize};
-    
-    // 来源
-    CGFloat sourceX = CGRectGetMaxX(_originalTimeFrame) + YQStatusMargin;
-    CGFloat sourceY = timeY;
-    CGSize sourceSize = [_status.source sizeWithFont:YQSourceFont];
-    _originalSourceFrame = (CGRect){{sourceX,sourceY},sourceSize};
+//    // 时间
+//    CGFloat timeX = nameX;
+//    CGFloat timeY = CGRectGetMaxY(_originalNameFrame) + YQStatusMargin * 0.5;
+//    CGSize timeSize = [_status.created_at sizeWithFont:YQTimeFont];
+//    _originalTimeFrame = (CGRect){{timeX,timeY},timeSize};
+//    
+//    // 来源
+//    CGFloat sourceX = CGRectGetMaxX(_originalTimeFrame) + YQStatusMargin;
+//    CGFloat sourceY = timeY;
+//    CGSize sourceSize = [_status.source sizeWithFont:YQSourceFont];
+//    _originalSourceFrame = (CGRect){{sourceX,sourceY},sourceSize};
     
     // 正文
     CGFloat textX = iconX;
@@ -95,7 +95,7 @@
     // 昵称的frame
     CGFloat nameX = YQStatusMargin;
     CGFloat nameY = nameX;
-    CGSize nameSize = [_status.retweeted_status.user.name sizeWithFont:YQNameFont];
+    CGSize nameSize = [_status.retweetName sizeWithFont:YQNameFont];
     _transmitNameFrame = (CGRect){{nameX,nameY},nameSize};
     
     // 正文
